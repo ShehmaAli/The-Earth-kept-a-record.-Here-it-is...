@@ -8,4 +8,3 @@ TODO
 TOTAL countries and cites = 10 countries and 10 cites
 """
 
-
