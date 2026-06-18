@@ -34,8 +34,43 @@ nuuk = pd.read_csv("Weather station csv/nuuk.csv")
 All_cities = [multan, delhi, london, new_york, beijing, sydney, tokyo, paris, dubai, nuuk]
 
 # another list from which the user can choose the graph for cities from
-All_cities_str = ["multan", "delhi", "london", "new_york", "beijing", "sydney", "tokyo", "paris", "dubai", "nuuk"]
+All_cities_str = ["multan", "delhi", "london", "new york", "beijing", "sydney", "tokyo", "paris", "dubai", "nuuk"]
 
 for i in All_cities:
     i.replace(999.90, np.nan, inplace=True)
+
+"""
+GRAPHS AND TYPES:
+1: Indiviual City/ country line graph
+2: all cities/ countries comparison
+3: Total warming bar chart
+4: Decade heatmap 
+5: Regression future predictor
+"""
+
+
+# graph 1
+def graph1city(city_csv, city_name):
+    fig = px.line(
+        city_csv,
+        x = "YEAR",
+        y = "metANN",
+        title = f"Temperature in {city_name} from 1940s to 2026"
+    )
+    fig.update_traces(connectgaps = True)
+    fig.show()
+
+def graph2city(city_csv, city_name):
+    pass
+
+
+
+# asking user for their desired city to show
+while True:
+    user_city = input("Enter desired city: ")
+    if user_city.lower() in All_cities_str:
+        city_index = All_cities_str.index(user_city.lower())
+        graph1city(All_cities[city_index], All_cities_str[city_index])
+        break
+
 
