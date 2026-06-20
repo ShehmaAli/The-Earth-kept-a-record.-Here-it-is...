@@ -18,7 +18,7 @@ ___
 
 Climate change is often discussed through reports, statistics, and headlines. But what does it actually look like over time?
 
-**The Earth Kept a Record . Here it is.**is an interactive climate dashboard that transforms historical climate data into engaging visual stories. Users can explore both **Cities Mode** and **Countries Mode**, compare warming trends, discover historical patterns, and visualise future predictions.
+**The Earth Kept a Record. Here it is.** is an interactive climate dashboard that transforms historical climate data into engaging visual stories. Users can explore both **Cities Mode** and **Countries Mode**, compare warming trends, discover historical patterns, and visualise future predictions.
 
 This project makes decades of climate data understandable, interactive, and accessible to everyone.
 
