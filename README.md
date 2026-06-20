@@ -77,7 +77,7 @@ This prediction would be done under the consideration of factors both positive a
 The future predictor tab is like this |
 
 
-With the factors enabled it is like this |
+With the factors enabled it is like this  |
 
 
 ___
