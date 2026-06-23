@@ -50,27 +50,30 @@ ___
 
 ## 🖥️ Dashboard Sturcture
 
-### Tab 1 - Temperature Trends 
+### Tab 1 - Homepage
+This page welcomes the user's and shows them the screenshots of all the graphs and from there they can also choose the graphs
+
+### Tab 2 - Temperature Trends 
 Interactive line charts showing long-term temperature changes.
 The graph will look like this |
 
 
-### Tab 2 - Compare Locations 
+### Tab 3 - Compare Locations 
 Compare multiple locations side-by-side
 The graph for this will be like this |
 
 
-### Tab 3 - Warming Rankings
+### Tab 4 - Warming Rankings
 Bar charts ranking locations by total warming.
 The bar graphs will be like this |
 
 
-### Tab 4 - Decade Heatmaps
+### Tab 5 - Decade Heatmaps
 Color-coded heatmaps showing warming patterns and the increase or decrease in temperature across decades.
 The heatmap is like this |
 
 
-### Tab 5 - Future Predictor 
+### Tab 6 - Future Predictor 
 Tempature changes are shown through regression and machine learning to predict the temperatures in the future countrywise.
 This prediction would be done under the consideration of factors both positive and negative.
 
