@@ -12,7 +12,7 @@ TOTAL countries and cites = 10 countries and 10 cites
 import numpy as np
 import pandas as pd
 import streamlit as st
-from graphs.graph1 import graph1
+
 
 # checking for any empty values in each of the CSVs
 # All the selected countries in the world
@@ -40,50 +40,31 @@ for i in All_cities:
     i.replace(999.90, np.nan, inplace=True)
     i["metANN"] = i["metANN"].interpolate(method="linear")
 
-"""
-GRAPHS AND TYPES:
-1: Indiviual City/country line graph seperately
-2: all cities/ countries comparison seperately
-3: Total warming bar chart seperately
-4: Decade heatmap seperately
-5: Regression future predictor
-"""
-
-
-# asking user for their desired city to show
-while True:
-    choice = input("Graph of Country or City: ")
-    if choice.lower() == "city":
-        user_city = input("Enter desired city: ")
-        if user_city.lower() in All_cities_str:
-            city_index = All_cities_str.index(user_city.lower())
-            graph1(All_cities[city_index], All_cities_str[city_index])
-        break
-    elif choice.lower() == "country":
-        user_country = input("Enter desired country or its code: ")
-        if user_country in world_data["Entity"] or user_country in world_data["Code"]:
-            print("YAAY")
-        break
-    else:
-        print("wrong enter again")
-
-
 # setting up web app using streamlit
+st.title("&#127758; Earth Kept a :red[Record]. Here it is!!")
+st.markdown("### 80 years of climate change shown easily", text_alignment="center")
+
+st.markdown("# User's choose from the following: ", text_alignment="center")
+
+st.set_page_config("Earth Kept a Record. Here it is!!", layout="centered")
+
+left_column, right_column = st.columns(2, gap= "medium", vertical_alignment="top")
+
+with left_column:
+    st.page_link("pages/graph1.py", label="Graph 1")
+    st.page_link("pages/graph3.py", label="Graph 3")
+    st.page_link("pages/graph5.py", label="Graph 5")
+
+with right_column:
+    st.page_link("pages/graph2.py", label="Graph 2")
+    st.page_link("pages/graph4.py", label="Graph 4")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# GRAPHS AND TYPES:
+# 1: Indiviual City/country line graph seperately
+# 2: all cities/ countries comparison seperately
+# 3: Total warming bar chart seperately
+# 4: Decade heatmap seperately
+# 5: Regression future predictor
 
 
