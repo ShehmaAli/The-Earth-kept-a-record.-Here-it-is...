@@ -9,36 +9,7 @@ TODO
 TOTAL countries and cites = 10 countries and 10 cites
 """
 
-import numpy as np
-import pandas as pd
 import streamlit as st
-
-
-# checking for any empty values in each of the CSVs
-# All the selected countries in the world
-world_data = pd.read_csv("Weather station csv/World_data.csv")
-
-# CSVs of the selected cities
-multan = pd.read_csv("Weather station csv/multan.csv")
-delhi = pd.read_csv("Weather station csv/delhi.csv")
-london = pd.read_csv("Weather station csv/london.csv")
-new_york = pd.read_csv("Weather station csv/new york.csv")
-beijing = pd.read_csv("Weather station csv/beijing.csv")
-sydney = pd.read_csv("Weather station csv/sydney.csv")
-tokyo = pd.read_csv("Weather station csv/tokyo.csv")
-paris = pd.read_csv("Weather station csv/paris.csv")
-dubai = pd.read_csv("Weather station csv/dubai.csv")
-nuuk = pd.read_csv("Weather station csv/nuuk.csv")
-
-# making a list and the then it can be used for multiple things
-All_cities = [multan, delhi, london, new_york, beijing, sydney, tokyo, paris, dubai, nuuk]
-
-# another list from which the user can choose the graph for cities from
-All_cities_str = ["multan", "delhi", "london", "new york", "beijing", "sydney", "tokyo", "paris", "dubai", "nuuk"]
-
-for i in All_cities:
-    i.replace(999.90, np.nan, inplace=True)
-    i["metANN"] = i["metANN"].interpolate(method="linear")
 
 # setting up web app using streamlit
 st.title("&#127758; Earth Kept a :red[Record]. Here it is!!")
