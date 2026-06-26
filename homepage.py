@@ -12,14 +12,28 @@ TOTAL countries and cites = 10 countries and 10 cites
 import streamlit as st
 
 # setting up web app using streamlit
-st.title("&#127758; Earth Kept a :red[Record]. Here it is!!")
+st.set_page_config("Earth Kept a Record. Here it is!!", "🌎",  layout="wide")
+st.title("&#127758; Earth Kept a :red[Record]. Here it is!!", text_alignment="center")
 st.markdown("### 80 years of climate change shown easily", text_alignment="center")
 
-st.markdown("# User's choose from the following: ", text_alignment="center")
+st.divider()
 
-st.set_page_config("Earth Kept a Record. Here it is!!", layout="centered")
+st.markdown("## User's choose from the following: ", text_alignment="center")
 
-left_column, right_column = st.columns(2, gap= "medium", vertical_alignment="top")
+
+column1, column2, column3 = st.columns(3, gap= "medium", vertical_alignment="top")
+
+with column1:
+    st.metric("Data" , ":blue[80+]")
+with column2:
+    st.metric("Visualisations", ":red[5]")
+with column3:
+    st.metric("Countries", " :green[200+]")
+
+st.divider()
+
+
+"""
 
 with left_column:
     st.page_link("pages/graph1.py", label="Graph 1")
@@ -30,7 +44,7 @@ with right_column:
     st.page_link("pages/graph2.py", label="Graph 2")
     st.page_link("pages/graph4.py", label="Graph 4")
 
-
+"""
 # GRAPHS AND TYPES:
 # 1: Indiviual City/country line graph seperately
 # 2: all cities/ countries comparison seperately
