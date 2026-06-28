@@ -12,7 +12,7 @@ TOTAL countries and cites = 10 countries and 10 cites
 import streamlit as st
 
 # setting up web app using streamlit
-st.set_page_config("Earth Kept a Record. Here it is!!", "🌎",  layout="wide")
+st.set_page_config("Earth Kept a Record. Here it is!!", "🌎", layout="wide")
 st.title("&#127758; Earth Kept a :red[Record]. Here it is!!", text_alignment="center")
 st.markdown("### 80 years of climate change shown easily", text_alignment="center")
 
@@ -20,11 +20,10 @@ st.divider()
 
 st.markdown("## User's choose from the following: ", text_alignment="center")
 
-
-column1, column2, column3 = st.columns(3, gap= "medium", vertical_alignment="top")
+column1, column2, column3 = st.columns(3, gap="medium", vertical_alignment="top")
 
 with column1:
-    st.metric("Data" , ":blue[80+]")
+    st.metric("Years of data", ":blue[80+]")
 with column2:
     st.metric("Visualisations", ":red[5]")
 with column3:
@@ -32,25 +31,89 @@ with column3:
 
 st.divider()
 
+with column1:
+    with st.container(border=True, vertical_alignment= "bottom"):
+        st.markdown(
+            "<h2 style='color:#45ffb8;'>📈 Temperature Trends</h2>",
+            unsafe_allow_html=True
+        )
+        st.markdown("<p style='color:#a8ffde;'>See the temperatures changes over 80+ years for any country or city. </p>",
+            unsafe_allow_html=True
 
-"""
+        )
+        st.write("")
+        st.page_link("pages/graph1.py", label="Explore Now")
+with column2:
+    with st.container(border=True, vertical_alignment= "bottom"):
+        st.markdown(
+            "<h2 style='color:#45ffec;'>🌡️ Climate Comparison</h2>",
+            unsafe_allow_html=True
+        )
+        st.markdown("<p style='color:#aafaf2;'>Pick multiple cities and see who warmed up fastest!! Is it the Africa or Asia any guesses!!</p>",
+            unsafe_allow_html=True
 
-with left_column:
-    st.page_link("pages/graph1.py", label="Graph 1")
-    st.page_link("pages/graph3.py", label="Graph 3")
-    st.page_link("pages/graph5.py", label="Graph 5")
+        )
+        st.write("")
+        st.page_link("pages/graph2.py", label="Start Comparing!!!")
+with column3:
+    with st.container(border=True, vertical_alignment= "bottom"):
+        st.markdown(
+            "<h2 style='color:#45d7ff;'>🌎 Heat Ranking</h2>",
+            unsafe_allow_html=True
+        )
+        st.write("")
+        st.markdown("<p style='color:#9ae7fc;'>Who is heating up the most?? Rank every country and city randomly or according to your wish in seconds!!</p>",
+            unsafe_allow_html=True
 
-with right_column:
-    st.page_link("pages/graph2.py", label="Graph 2")
-    st.page_link("pages/graph4.py", label="Graph 4")
+        )
+        st.write("")
+        st.page_link("pages/graph3.py", label="View Ranking!!")
 
-"""
+col1, col2 = st.columns(2)
+
+with col1:
+    with st.container(border=True, vertical_alignment= "bottom"):
+        st.markdown(
+             "<h2 style='color:#457dff;'>🗺️ Temperature Heatmap</h2>",
+                     unsafe_allow_html=True)
+        st.write("")
+        st.markdown(
+            "<p style='color:#86aafc;'>Watch climate change unfold decade by decade with an interactive heatmap.Find your country/city as well</p>",
+            unsafe_allow_html=True)
+        st.write("")
+        st.page_link("pages/graph4.py", label="Open heatmap")
+with col2:
+    with st.container(border=True, vertical_alignment= "bottom"):
+        st.markdown(
+             "<h2 style='color:#7045ff;'>🔮 Future Temperature Prediction</h2>",
+                     unsafe_allow_html=True)
+        st.markdown(
+            "<p style='color:#c6b5ff;'>What could the future look like? See it yourself with the help of AI magic :) </p>",
+            unsafe_allow_html=True)
+        st.write("")
+        st.page_link("pages/graph5.py", label="Let's see the future!!!")
+
+st.divider()
+
+st.markdown("## About:")
+st.markdown("The Earth Kept a Record transforms over 80 years of real climate data "
+            "into an interactive experience. Explore temperature trends, compare cities and countries, "
+            "uncover climate patterns, and discover what Earth's data has to "
+            "say, all through beautiful, easy-to-use visualizations.")
+st.write("")
+st.markdown("<p style='color:#d1ffee;'>Every graph reveals another chapter of Earth's story. </p>",
+            unsafe_allow_html=True)
+
+st.divider()
+
+st.markdown("## Curious to explore more 🤔???")
+st.write("")
+st.page_link("pages/moreinfo.py", label="Let's go!!")
+
+
 # GRAPHS AND TYPES:
 # 1: Indiviual City/country line graph seperately
 # 2: all cities/ countries comparison seperately
 # 3: Total warming bar chart seperately
 # 4: Decade heatmap seperately
 # 5: Regression future predictor
-
-
-
