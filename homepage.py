@@ -18,7 +18,7 @@ st.markdown("### 80 years of climate change shown easily", text_alignment="cente
 
 st.divider()
 
-st.markdown("## User's choose from the following: ", text_alignment="center")
+st.markdown("## Let's see the Earth's record: ", text_alignment="center")
 
 column1, column2, column3 = st.columns(3, gap="medium", vertical_alignment="top")
 
@@ -49,7 +49,7 @@ with column2:
             "<h2 style='color:#45ffec;'>🌡️ Climate Comparison</h2>",
             unsafe_allow_html=True
         )
-        st.markdown("<p style='color:#aafaf2;'>Pick multiple cities and see who warmed up fastest!! Is it the Africa or Asia any guesses!!</p>",
+        st.markdown("<p style='color:#aafaf2;'>Pick multiple cities and see who warmed up fastest. Take a guess!!!</p>",
             unsafe_allow_html=True
 
         )
@@ -62,7 +62,7 @@ with column3:
             unsafe_allow_html=True
         )
         st.write("")
-        st.markdown("<p style='color:#9ae7fc;'>Who is heating up the most?? Rank every country and city randomly or according to your wish in seconds!!</p>",
+        st.markdown("<p style='color:#9ae7fc;'>Who is heating up the most?? Who warmed up the most?? See the top 20 countries and cities in seconds!!</p>",
             unsafe_allow_html=True
 
         )
@@ -78,7 +78,7 @@ with col1:
                      unsafe_allow_html=True)
         st.write("")
         st.markdown(
-            "<p style='color:#86aafc;'>Watch climate change unfold decade by decade with an interactive heatmap.Find your country/city as well</p>",
+            "<p style='color:#86aafc;'>Watch climate change unfold decade by decade with an interactive heatmap.Maybe your country is the hottest who knows??!</p>",
             unsafe_allow_html=True)
         st.write("")
         st.page_link("pages/graph4.py", label="Open heatmap")
@@ -88,7 +88,7 @@ with col2:
              "<h2 style='color:#7045ff;'>🔮 Future Temperature Prediction</h2>",
                      unsafe_allow_html=True)
         st.markdown(
-            "<p style='color:#c6b5ff;'>What could the future look like? See it yourself with the help of AI magic :) </p>",
+            "<p style='color:#c6b5ff;'>See what the future looks like yourself with the magic of machine learning :) </p>",
             unsafe_allow_html=True)
         st.write("")
         st.page_link("pages/graph5.py", label="Let's see the future!!!")
@@ -101,7 +101,7 @@ st.markdown("The Earth Kept a Record transforms over 80 years of real climate da
             "uncover climate patterns, and discover what Earth's data has to "
             "say, all through beautiful, easy-to-use visualizations.")
 st.write("")
-st.markdown("<p style='color:#d1ffee;'>Every graph reveals another chapter of Earth's story. </p>",
+st.markdown("<p style='color:#d1ffee;'>Every graph is the reflections of our actions. </p>",
             unsafe_allow_html=True)
 
 st.divider()
