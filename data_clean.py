@@ -20,18 +20,40 @@ def load_data():
     paris = pd.read_csv("Weather station csv/paris.csv")
     dubai = pd.read_csv("Weather station csv/dubai.csv")
     nuuk = pd.read_csv("Weather station csv/nuuk.csv")
+    cairo = pd.read_csv("Weather station csv/cairo.csv")
+    toronto = pd.read_csv("Weather station csv/toronto.csv")
+    moscow = pd.read_csv("Weather station csv/singapore.csv")
+    singapore = pd.read_csv("Weather station csv/singapore.csv")
+    madrid = pd.read_csv("Weather station csv/madrid.csv")
+    seoul = pd.read_csv("Weather station csv/seoul.csv")
+    rome = pd.read_csv("Weather station csv/rome.csv")
+    berlin = pd.read_csv("Weather station csv/berlin.csv")
+    bangkok = pd.read_csv("Weather station csv/bangkok.csv")
+    oslo = pd.read_csv("Weather station csv/oslo.csv")
 
     # another list from which the user can choose the graph for cities from
-    all_cities = {"Multan": multan,
-                  "Delhi": delhi,
-                  "London": london,
-                  "New york": new_york,
-                  "Beijing": beijing,
-                  "Sydney": sydney,
-                  "Tokyo": tokyo,
-                  "Paris": paris,
-                  "Dubai": dubai,
-                  "Nuuk": nuuk}
+    all_cities = {
+        "Bangkok": bangkok,
+        "Beijing": beijing,
+        "Berlin": berlin,
+        "Cairo": cairo,
+        "Delhi": delhi,
+        "Dubai": dubai,
+        "London": london,
+        "Madrid": madrid,
+        "Moscow": moscow,
+        "Multan": multan,
+        "New York": new_york,
+        "Nuuk": nuuk,
+        "Oslo": oslo,
+        "Paris": paris,
+        "Rome": rome,
+        "Seoul": seoul,
+        "Singapore": singapore,
+        "Sydney": sydney,
+        "Tokyo": tokyo,
+        "Toronto": toronto,
+    }
 
     return world_data, all_cities
 
