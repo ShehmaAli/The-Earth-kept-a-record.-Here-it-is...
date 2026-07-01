@@ -89,6 +89,25 @@ def to_anomalies(cities):
             df["Temperature anomaly"] = df["metANN"] - baseline
 
     return cities
-def to_one_df():
-    pass
 
+
+def to_one_df(selected_cites: list, cities_dataset):
+    selected_cities_list = []
+    for city in selected_cites:
+        one_city_df = cities_dataset[city].copy()
+        one_city_df["Location"] = city
+        selected_cities_list.append(one_city_df)
+
+    all_selected_cities_df = pd.concat(selected_cities_list, ignore_index=True)
+
+    return all_selected_cities_df
+
+def extract_countries(selected_countries : list, countries_csv):
+    selected_countries_list = []
+    for country in selected_countries:
+        one_country_data = countries_csv[countries_csv["Entity"] == country]
+        selected_countries_list.append(one_country_data)
+
+    all_selected_countries_df = pd.concat(selected_countries_list, ignore_index= True)
+
+    return all_selected_countries_df
