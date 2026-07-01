@@ -75,3 +75,20 @@ def one_country_name(data):
             country = single_country
 
     return countries
+
+
+def to_anomalies(cities):
+    for name, df in cities.items():
+        df["Temperature anomaly"] = np.nan
+        if df["YEAR"].min() == 1940:
+            baseline_period = df[(df["YEAR"] >= 1961) & (df["YEAR"] <= 1990)]
+            baseline = baseline_period["metANN"].mean()
+            df["Temperature anomaly"] = df["metANN"] - baseline
+        else:
+            baseline = df["metANN"].mean()
+            df["Temperature anomaly"] = df["metANN"] - baseline
+
+    return cities
+def to_one_df():
+    pass
+
