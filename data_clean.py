@@ -1,14 +1,19 @@
+# LIBRARIES :)
 import numpy as np
 import pandas as pd
 import streamlit as st
 
 
+# using st.cache_data to make data processing faster whenever data is needed again
 @st.cache_data
+# FUNCTION 1
+# this function is basically to load all the necessary datasets for this web application !!!
 def load_data():
     # checking for any empty values in each of the CSVs
     # All the selected countries in the world
     world_data = pd.read_csv("Weather station csv/World_data.csv")
 
+    # reading all the city CSVs and giving them each a good variable name
     # CSVs of the selected cities
     multan = pd.read_csv("Weather station csv/multan.csv")
     delhi = pd.read_csv("Weather station csv/delhi.csv")
@@ -31,7 +36,8 @@ def load_data():
     bangkok = pd.read_csv("Weather station csv/bangkok.csv")
     oslo = pd.read_csv("Weather station csv/oslo.csv")
 
-    # another list from which the user can choose the graph for cities from
+    # Putting the city CSVs which have been read and entering into a dictionary
+    # for easier data handling later
     all_cities = {
         "Bangkok": bangkok,
         "Beijing": beijing,
@@ -58,6 +64,10 @@ def load_data():
     return world_data, all_cities
 
 
+# FUNCTION 2
+# this function is used to clean the CSVs
+# like taking care of the empty(where nothing is entered place) and interpolate them
+# so that there is no problem later when making the graph
 def clean_csvs(all_cities, world_data):
     for i in all_cities.values():
         i.replace(999.90, np.nan, inplace=True)
@@ -66,8 +76,13 @@ def clean_csvs(all_cities, world_data):
     return all_cities, world_data
 
 
+# FUNCTION 3
+# this function is used to give a list of each country in the world data csv
+# this function is made to help when the user selects their desired country
 def one_country_name(data):
     country = ""
+
+    # a separate list to store each country once
     countries = []
     for single_country in data["Entity"]:
         if single_country != country:
@@ -77,6 +92,8 @@ def one_country_name(data):
     return countries
 
 
+# FUNCTION 3:|
+#
 def to_anomalies(cities):
     for name, df in cities.items():
         df["Temperature anomaly"] = np.nan
@@ -102,12 +119,23 @@ def to_one_df(selected_cites: list, cities_dataset):
 
     return all_selected_cities_df
 
-def extract_countries(selected_countries : list, countries_csv):
+
+def extract_countries(selected_countries: list, countries_csv):
     selected_countries_list = []
     for country in selected_countries:
         one_country_data = countries_csv[countries_csv["Entity"] == country]
         selected_countries_list.append(one_country_data)
 
-    all_selected_countries_df = pd.concat(selected_countries_list, ignore_index= True)
+    all_selected_countries_df = pd.concat(selected_countries_list, ignore_index=True)
 
     return all_selected_countries_df
+
+
+def heatmap_cities(cities_dataset):
+    heatmap_cities = {}
+
+    for city, df in cities_dataset.items():
+        if df["YEAR"].min() <= 1940:
+            heatmap_cities[city] = df
+
+    return heatmap_cities
