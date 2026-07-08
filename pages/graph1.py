@@ -25,7 +25,7 @@ st.title("Welcome to Graph 1 :party:")
 
 st.markdown("## Choose the following")
 
-choices = ["Choose amoung the following:", "City", "Country"]
+choices = ["City", "Country"]
 
 answer = st.radio("Choose: ", choices)
 
