@@ -139,3 +139,35 @@ def heatmap_cities(cities_dataset):
             heatmap_cities[city] = df
 
     return heatmap_cities
+
+def get_ranks(cities_csv, country_csv, all_country_list):
+    country_ranks = []
+    city_ranks = []
+    for city, df in cities_csv.items():
+        first = df["Temperature anomaly"].iloc[0]
+        last = df["Temperature anomaly"].iloc[-1]
+        increase = last - first
+        city_ranks.append({
+            "Location": city,
+            "Increase": increase
+        })
+    city_ranking_df = pd.DataFrame(city_ranks)
+
+    for country in all_country_list:
+        country_df = country_csv[
+            country_csv["Entity"] == country
+            ]
+        first = country_df["Temperature anomaly"].iloc[0]
+
+        last = country_df["Temperature anomaly"].iloc[-1]
+
+        increase = last - first
+
+        country_ranks.append({
+            "Entity": country,
+            "Increase": increase
+        })
+        country_ranking_df = pd.DataFrame(country_ranks)
+
+    return city_ranking_df,country_ranking_df
+
