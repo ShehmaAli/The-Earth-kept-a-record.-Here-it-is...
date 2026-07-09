@@ -2,6 +2,8 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
 
 
 # using st.cache_data to make data processing faster whenever data is needed again
@@ -171,3 +173,23 @@ def get_ranks(cities_csv, country_csv, all_country_list):
 
     return city_ranking_df,country_ranking_df
 
+def predict(type, csv,prediction_year):
+    poly = PolynomialFeatures(degree=2)
+    if type == "City":
+        X_poly = poly.fit_transform(csv[["YEAR"]])
+        print(X_poly[:5])
+    else:
+        X_poly = poly.fit_transform(csv[["Year"]])
+        print(X_poly[:5])
+    model = LinearRegression()
+    model.fit(X_poly, csv["Temperature anomaly"])
+    future_year = np.arange(2026, prediction_year+1).reshape(-1,1)
+    future_predict = poly.transform(future_year)
+    prediction = model.predict(future_predict)
+
+    predicted_df = pd.DataFrame({
+        "Year": future_year.flatten(),
+        "Prediction" : prediction
+    })
+    print(predicted_df.head(8))
+    return predicted_df
