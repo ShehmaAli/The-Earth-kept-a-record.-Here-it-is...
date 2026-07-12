@@ -33,19 +33,17 @@ def graph1(type, csv, name):
 col1, col2 = st.columns([1.5, 1])
 
 with col1:
-    with st.container(border= True):
-        st.markdown(
-            "<h2 style='color:#a6ffe6;'> Start by selecting a category </h2>",
-            unsafe_allow_html=True, text_alignment="center"
-            )
-        with st.container(border= True):
+    with st.container(border=True, height= 265):
+        st.markdown("### Start by selecting a category", text_alignment= "center")
+        st.write("")
+        with st.container(border=True, height=120):
             choices = ["City", "Country"]
             answer = st.radio("Choose:                           ", choices)
 
 with col2:
-    with st.container(border= True):
+    with st.container(border= True, height= 265):
         st.markdown("### What is temperature anomaly??")
-        st.markdown("<p style='color:#9afcd7;'> A temperature anomaly shows how much warmer or cooler a place is compared to its usual long-term average temperature.</p>",
+        st.markdown("<p style='color:#9afcd7;'>A temperature anomaly shows how much warmer or cooler a place is compared to its usual long-term average temperature.</p>",
             unsafe_allow_html=True, text_alignment="center"
         )
         st.markdown("🟥 Positive (+) = Warmer than average")
@@ -58,7 +56,6 @@ if answer == "City":
     city_choosen = st.selectbox("City", ["Select any option"] + list(Allcities.keys()))
 
     st.divider()
-
 
     if city_choosen != "Select any option":
         fig = graph1(answer, all_cities[city_choosen], city_choosen)
