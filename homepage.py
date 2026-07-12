@@ -32,7 +32,7 @@ with column3:
 st.divider()
 
 with column1:
-    with st.container(border=True, vertical_alignment= "bottom"):
+    with st.container(border=True, vertical_alignment= "bottom", height=250):
         st.markdown(
             "<h2 style='color:#45ffb8;'>📈 Temperature Trends</h2>",
             unsafe_allow_html=True
@@ -44,7 +44,7 @@ with column1:
         st.write("")
         st.page_link("pages/graph1.py", label="Explore Now")
 with column2:
-    with st.container(border=True, vertical_alignment= "bottom"):
+    with st.container(border=True, vertical_alignment= "bottom",height=250):
         st.markdown(
             "<h2 style='color:#45ffec;'>🌡️ Climate Comparison</h2>",
             unsafe_allow_html=True
@@ -56,7 +56,7 @@ with column2:
         st.write("")
         st.page_link("pages/graph2.py", label="Start Comparing!!!")
 with column3:
-    with st.container(border=True, vertical_alignment= "bottom"):
+    with st.container(border=True, vertical_alignment= "bottom",height=250):
         st.markdown(
             "<h2 style='color:#45d7ff;'>🌎 Heat Ranking</h2>",
             unsafe_allow_html=True
@@ -72,7 +72,7 @@ with column3:
 col1, col2 = st.columns(2)
 
 with col1:
-    with st.container(border=True, vertical_alignment= "bottom"):
+    with st.container(border=True, vertical_alignment= "bottom", height=250):
         st.markdown(
              "<h2 style='color:#457dff;'>🗺️ Temperature Heatmap</h2>",
                      unsafe_allow_html=True)
@@ -83,7 +83,7 @@ with col1:
         st.write("")
         st.page_link("pages/graph4.py", label="Open heatmap")
 with col2:
-    with st.container(border=True, vertical_alignment= "bottom"):
+    with st.container(border=True, vertical_alignment= "bottom", height=250):
         st.markdown(
              "<h2 style='color:#7045ff;'>🔮 Future Temperature Prediction</h2>",
                      unsafe_allow_html=True)
