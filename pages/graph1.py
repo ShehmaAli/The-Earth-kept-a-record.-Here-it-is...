@@ -67,7 +67,6 @@ if answer == "City":
         st.plotly_chart(fig, use_container_width=True)
 
 if answer == "Country":
-
     country_choosen = st.selectbox("Country", ["Select any option"] + one_country_name(clean_world_data))
 
     st.divider()
