@@ -72,7 +72,7 @@ with column3:
 col1, col2 = st.columns(2)
 
 with col1:
-    with st.container(border=True, vertical_alignment= "bottom", height=250):
+    with st.container(border=True, vertical_alignment= "center", height=250):
         st.markdown(
              "<h2 style='color:#457dff;'>🗺️ Temperature Heatmap</h2>",
                      unsafe_allow_html=True)
@@ -83,7 +83,7 @@ with col1:
         st.write("")
         st.page_link("pages/graph4.py", label="Open heatmap")
 with col2:
-    with st.container(border=True, vertical_alignment= "bottom", height=250):
+    with st.container(border=True, vertical_alignment="center", height=250):
         st.markdown(
              "<h2 style='color:#7045ff;'>🔮 Future Temperature Prediction</h2>",
                      unsafe_allow_html=True)
