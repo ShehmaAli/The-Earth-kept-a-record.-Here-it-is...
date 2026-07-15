@@ -16,15 +16,14 @@ cities_in_anomalies = to_anomalies(all_heatmap_cities)
 # WEB PAGE using streamlit
 
 # the title and some necesesties this webpage
-st.title("Welcome to Graph 4")
 
-st.markdown("## Choose the following")
+st.set_page_config("Temperature Heatmap", "🗺️", layout="wide")
+st.title("🗺️ Temperature Heatmap", text_alignment="center")
+st.markdown("<p style='color:#a2bdfc;'>Watch climate change unfold decade by decade with an interactive heatmap.Maybe your country is the hottest who knows??!</p>",
+            unsafe_allow_html=True, text_alignment="center"
+            )
 
-choices = ["City", "Country"]
-
-answer = st.radio("Choose: ", choices)
-
-
+st.divider()
 def graph4(type, csv):
     if type == "City":
         csv["Decade"] = (csv["YEAR"] // 10) * 10
@@ -50,10 +49,40 @@ def graph4(type, csv):
     return fig
 
 
+col1, col2 = st.columns([1.5, 1])
+
+with col1:
+    with st.container(border=True, height=265):
+        st.markdown("## Start by selecting a category ", text_alignment="center")
+        st.write(" ")
+
+        with st.container(border=True, height=120):
+            choices = ["City", "Country"]
+            answer = st.radio("Select among this", choices)
+
+with col2:
+    with st.container(border= True, height= 265):
+        st.markdown("### What is Temperature Anomaly??")
+        st.markdown(
+            "<p style='color:#a2bdfc;'>A temperature anomaly shows how much warmer or cooler a place is compared to its usual long-term average temperature.</p>",
+            unsafe_allow_html=True, text_alignment="center"
+            )
+        st.markdown("🟥 Positive (+) = Warmer than average")
+        st.markdown("🟦 Negative (−) = Cooler than average")
+
+
 if answer == "City":
-    need_random = st.button("Random")
+    with col2:
+        with st.container(border=True, height=140):
+            st.markdown("### 🎲 Surprise Me!!!")
+            need_random = st.button("🎲 Random City/Country")
+
+    st.divider()
+
     if not need_random:
         user_cites = st.multiselect("Cities", list(all_heatmap_cities.keys()), max_selections=10)
+
+        st.divider()
         if len(user_cites) >= 2:
             selected_df = to_one_df(user_cites, cities_in_anomalies)
             fig = graph4(answer, selected_df)
@@ -71,9 +100,17 @@ if answer == "City":
         st.plotly_chart(fig, use_container_width=True)
 
 if answer == "Country":
-    need_random = st.button("Random")
+    with col2:
+        with st.container(border=True, height=140):
+            st.markdown("### 🎲 Surprise Me!!!")
+            need_random = st.button("🎲 Random City/Country")
+
+    st.divider()
+
     if not need_random:
         user_countries = st.multiselect("Countries", one_country_name(clean_world_data), max_selections=10)
+        st.divider()
+
         if len(user_countries) >= 2:
             selected_df_countries = extract_countries(user_countries, clean_world_data)
             fig = graph4(answer, selected_df_countries)
