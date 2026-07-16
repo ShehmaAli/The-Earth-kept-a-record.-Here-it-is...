@@ -6,3 +6,4 @@ pip~=26.1.2
 attrs~=26.1.0
 pillow~=12.2.0
 Jinja2~=3.1.6
+scikit-learn
