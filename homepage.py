@@ -8,6 +8,12 @@ TODO
 
 TOTAL countries and cites = 10 countries and 10 cites
 """
+# GRAPHS AND TYPES:
+# 1: Indiviual City/country line graph seperately
+# 2: all cities/ countries comparison seperately
+# 3: Total warming bar chart seperately
+# 4: Decade heatmap seperately
+# 5: Regression future predictor
 
 import streamlit as st
 
@@ -106,14 +112,7 @@ st.markdown("<p style='color:#d1ffee;'>Every graph is the reflections of our act
 
 st.divider()
 
-st.markdown("## Curious to explore more 🤔???")
-st.write("")
-st.page_link("pages/moreinfo.py", label="Let's go!!")
+st.markdown("## Curious to explore more 🤔???", text_alignment="center")
+st.markdown("### 📂 Let's go to explore the GitHub Repository", text_alignment="center")
+st.page_link("https://github.com/ShehmaAli/The-Earth-kept-a-record.-Here-it-is...", label="Let's go!!", width="stretch")
 
-
-# GRAPHS AND TYPES:
-# 1: Indiviual City/country line graph seperately
-# 2: all cities/ countries comparison seperately
-# 3: Total warming bar chart seperately
-# 4: Decade heatmap seperately
-# 5: Regression future predictor
