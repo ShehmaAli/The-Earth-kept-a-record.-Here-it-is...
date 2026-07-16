@@ -5,13 +5,13 @@ from data_clean import load_data, clean_csvs, one_country_name
 world_data, all_cities = load_data()
 Allcities, clean_world_data = clean_csvs(all_cities, world_data)
 
-
 st.set_page_config("Temperature Trends", "📈", layout="wide")
-st.title("📈 Temperature Trends", text_alignment= "center")
-st.markdown("<p style='color:#a8ffde;'>Explore the temperatures changes over 80+ years for any country or city individually. </p>",
-            unsafe_allow_html=True, text_alignment="center"
+st.title("📈 Temperature Trends", text_alignment="center")
+st.markdown(
+    "<p style='color:#a8ffde;'>Explore the temperatures changes over 80+ years for any country or city individually. </p>",
+    unsafe_allow_html=True, text_alignment="center"
 
-        )
+    )
 
 st.divider()
 
@@ -26,29 +26,30 @@ def graph1(type, csv, name):
         temps = csv["Temperature anomaly"]
         final_title = f"Temperature anomalies in {name}"
 
-    fig = px.line(csv, x=years, y=temps, title= final_title , color_discrete_sequence= ["orangered"])
+    fig = px.line(csv, x=years, y=temps, title=final_title, color_discrete_sequence=["orangered"])
 
     return fig
+
 
 col1, col2 = st.columns([1.5, 1])
 
 with col1:
-    with st.container(border=True, height= 265):
-        st.markdown("### Start by selecting a category", text_alignment= "center")
+    with st.container(border=True, height=265):
+        st.markdown("### Start by selecting a category", text_alignment="center")
         st.write("")
         with st.container(border=True, height=120):
             choices = ["City", "Country"]
             answer = st.radio("Choose:                           ", choices)
 
 with col2:
-    with st.container(border= True, height= 265):
+    with st.container(border=True, height=265):
         st.markdown("### What is temperature anomaly??")
-        st.markdown("<p style='color:#9afcd7;'>A temperature anomaly shows how much warmer or cooler a place is compared to its usual long-term average temperature.</p>",
+        st.markdown(
+            "<p style='color:#9afcd7;'>A temperature anomaly shows how much warmer or cooler a place is compared to its usual long-term average temperature.</p>",
             unsafe_allow_html=True, text_alignment="center"
-        )
+            )
         st.markdown("🟥 Positive (+) = Warmer than average")
         st.markdown("🟦 Negative (−) = Cooler than average")
-
 
 st.divider()
 
