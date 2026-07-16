@@ -16,6 +16,10 @@ TOTAL countries and cites = 10 countries and 10 cites
 # 5: Regression future predictor
 
 import streamlit as st
+import os
+
+st.write(os.listdir())
+st.write(os.listdir("Weather station csv"))
 
 # setting up web app using streamlit
 st.set_page_config("Earth Kept a Record. Here it is!!", "🌎", layout="wide")
