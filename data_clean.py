@@ -13,7 +13,7 @@ from sklearn.linear_model import LinearRegression
 def load_data():
     # checking for any empty values in each of the CSVs
     # All the selected countries in the world
-    world_data = pd.read_csv("Weather station csv/World_data.csv")
+    world_data = pd.read_csv("Weather station csv/world_data.csv")
 
     # reading all the city CSVs and giving them each a good variable name
     # CSVs of the selected cities
