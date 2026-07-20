@@ -6,7 +6,7 @@ import plotly.express as px
 # getting the functions from the file data_clean.py
 from data_clean import load_data, clean_csvs, one_country_name
 
-# loading up the necessary data
+# setting up and accessing the required data for this graph
 world_data, all_cities = load_data()
 Allcities, clean_world_data = clean_csvs(all_cities, world_data)
 
