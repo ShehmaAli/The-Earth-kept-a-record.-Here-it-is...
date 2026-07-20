@@ -1,22 +1,31 @@
+# LIBRARIES :)
+# importing important libraries needed
 import streamlit as st
 import plotly.express as px
+
+# getting the functions from the file data_clean.py
 from data_clean import load_data, clean_csvs, one_country_name
 
+# loading up the necessary data
 world_data, all_cities = load_data()
 Allcities, clean_world_data = clean_csvs(all_cities, world_data)
 
+# setting up the web page using streamlit
 st.set_page_config("Temperature Trends", "📈", layout="wide")
 st.title("📈 Temperature Trends", text_alignment="center")
+# using html,css for the different colors
 st.markdown(
     "<p style='color:#a8ffde;'>Explore the temperatures changes over 80+ years for any country or city individually. </p>",
     unsafe_allow_html=True, text_alignment="center"
 
     )
 
+# using st.divider to put a divider and make the page clean
 st.divider()
 
 
 def graph1(type, csv, name):
+    # getting the parameters for the graph according to the category
     if type == "City":
         years = csv["YEAR"]
         temps = csv["metANN"]
@@ -26,14 +35,19 @@ def graph1(type, csv, name):
         temps = csv["Temperature anomaly"]
         final_title = f"Temperature anomalies in {name}"
 
+    # making a graph with the use of px.line
     fig = px.line(csv, x=years, y=temps, title=final_title, color_discrete_sequence=["orangered"])
 
+    # returning the made figure
     return fig
 
 
+# using st.columns to make columns both of different sizes
 col1, col2 = st.columns([1.5, 1])
 
 with col1:
+    # displaying the selection card which selects the category
+    # using html,css for the different colors
     with st.container(border=True, height=265):
         st.markdown("### Start by selecting a category", text_alignment="center")
         st.write("")
@@ -42,6 +56,8 @@ with col1:
             answer = st.radio("Choose:                           ", choices)
 
 with col2:
+    # displaying the card showing the defination of temperature anomaly
+    # using html,css for the different colors
     with st.container(border=True, height=265):
         st.markdown("### What is temperature anomaly??")
         st.markdown(
@@ -51,32 +67,51 @@ with col2:
         st.markdown("🟥 Positive (+) = Warmer than average")
         st.markdown("🟦 Negative (−) = Cooler than average")
 
+# using st.divider to put a divider and make the page clean
 st.divider()
 
+# if the category chosen by the user is City then displaying a select box to select a single city
 if answer == "City":
     city_choosen = st.selectbox("City", ["Select any option"] + list(Allcities.keys()))
 
+    # using st.divider to put a divider and make the page clean
     st.divider()
 
+    # if the user has chosen a city then it calls for the function graph1
     if city_choosen != "Select any option":
         fig = graph1(answer, all_cities[city_choosen], city_choosen)
+        # Adjust the graph layout for better readability
+        # and display it inside the Streamlit application.
         fig.update_layout(
             margin=dict(l=50, r=20, t=40, b=40),
             autosize=True
         )
+        # Rotate the x-axis labels to avoid overlapping.
         fig.update_xaxes(tickangle=45)
+
+        # Display the Plotly graph and allow it to
+        # automatically fit the available page width
         st.plotly_chart(fig, use_container_width=True)
 
+# if the category chosen by the user is Country then displaying a select box to select a single country
 if answer == "Country":
     country_choosen = st.selectbox("Country", ["Select any option"] + one_country_name(clean_world_data))
 
+    # using st.divider to put a divider and make the page clean
     st.divider()
 
+    # if the user has chosen a country then it calls for the function graph1
     if country_choosen != "Select any option":
         fig = graph1(answer, clean_world_data[clean_world_data["Entity"] == country_choosen], country_choosen)
+        # Adjust the graph layout for better readability
+        # and display it inside the Streamlit application
         fig.update_layout(
             margin=dict(l=50, r=20, t=40, b=40),
             autosize=True
         )
+        # Rotate the x-axis labels to avoid overlapping
         fig.update_xaxes(tickangle=45)
+
+        # Display the Plotly graph and allow it to
+        # automatically fit the available page width
         st.plotly_chart(fig, use_container_width=True)
