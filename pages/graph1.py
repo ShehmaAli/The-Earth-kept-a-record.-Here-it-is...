@@ -24,6 +24,8 @@ st.markdown(
 st.divider()
 
 
+# MAIN FUNCTION :)
+# this is basically the main function that gives the graph
 def graph1(type, csv, name):
     # getting the parameters for the graph according to the category
     if type == "City":
