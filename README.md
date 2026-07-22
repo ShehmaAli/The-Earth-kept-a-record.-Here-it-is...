@@ -38,7 +38,7 @@ You can explore the project here:
 
 🌍 **The Earth Kept a Record. Here It Is.**
 
-👉 https://your-streamlit-url.streamlit.app
+👉 https://the-earth-kept-a-record-here-it-is-vavg5teg69z5fpeqsqcren.streamlit.app/
 
 No installation is required — simply open the link in your browser and start exploring.
 
