@@ -1,5 +1,5 @@
 # LIBRARIES :)
-# importing important libraries needed
+# importing required libraries
 import streamlit as st
 import plotly.express as px
 

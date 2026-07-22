@@ -1,5 +1,9 @@
+# LIBRARIES :)
+# importing important libraries needed
 import streamlit as st
 import plotly.express as px
+
+# getting the functions from the file data_clean.py
 from data_clean import load_data, clean_csvs, one_country_name, to_anomalies, \
     heatmap_cities, get_ranks
 
@@ -8,69 +12,111 @@ world_data, all_cities = load_data()
 Allcities, clean_world_data = clean_csvs(all_cities, world_data)
 all_heatmap_cities = heatmap_cities(Allcities)
 cities_in_anomalies = to_anomalies(all_heatmap_cities)
-city_ranks_df, country_ranks_df = get_ranks(cities_in_anomalies, clean_world_data, one_country_name(clean_world_data))
 
+# creating the ranking dataframes
+city_ranks_df, country_ranks_df = get_ranks(
+    cities_in_anomalies,
+    clean_world_data,
+    one_country_name(clean_world_data)
+)
+
+# setting up the webpage information for this graph
 st.set_page_config("Heat Ranking", "🌎", layout="wide")
 st.title("🌎 Heat Ranking", text_alignment="center")
-st.markdown("<p style='color:#9ae7fc;'>Who is heating up the most?? Who warmed up the most?? See the top 20 countries and cities in seconds!!</p>",
-            unsafe_allow_html=True, text_alignment="center"
-            )
+st.markdown(
+    "<p style='color:#9ae7fc;'>Who is heating up the most?? Who warmed up the most?? See the top 20 countries and cities in seconds!!</p>",
+    unsafe_allow_html=True,
+    text_alignment="center"
+)
 
+# using st.divider to put a divider and make the page clean
 st.divider()
 
+
+# FUNCTION :)
+# creates the warming ranking graph
 def graph3(type, csv, order):
+
+    # sorting the dataframe according to the selected option
     if type == "City":
-        if order == "Lowest warming":
-            csv = csv.sort_values(
-                by="Increase",
-                ascending = False
-            )
-        if order == "Highest warming":
-            csv = csv.sort_values(
-                by="Increase",
-                ascending=True
-            )
-    else:
-        if order == "Highest warming":
-            csv = csv.sort_values(
-                by="Increase",
-                ascending=True
-            )
         if order == "Lowest warming":
             csv = csv.sort_values(
                 by="Increase",
                 ascending=False
             )
 
+        if order == "Highest warming":
+            csv = csv.sort_values(
+                by="Increase",
+                ascending=True
+            )
+
+    else:
+        if order == "Highest warming":
+            csv = csv.sort_values(
+                by="Increase",
+                ascending=True
+            )
+
+        if order == "Lowest warming":
+            csv = csv.sort_values(
+                by="Increase",
+                ascending=False
+            )
+
+    # keeping only the top 15 results
     csv = csv.iloc[:15]
+
+    # creating the city ranking graph
     if type == "City":
+
         if order == "Highest warming":
             title = "Top 15 cities with the Highest warming"
         else:
             title = "Top 15 cities with the Lowest warming"
-        fig = px.bar(csv, x="Increase", y="Location", orientation="h", title=title, color="Increase",
-                         color_continuous_scale="RdYlBu_r")
+
+        fig = px.bar(
+            csv,
+            x="Increase",
+            y="Location",
+            orientation="h",
+            title=title,
+            color="Increase",
+            color_continuous_scale="RdYlBu_r"
+        )
+
         fig.update_layout(coloraxis_showscale=False)
 
-
+    # creating the country ranking graph
     if type == "Country":
+
         if order == "Highest warming":
             title = "Top 15 countries with the Highest warming"
         else:
             title = "Top 15 countries with the Lowest warming"
 
-        fig = px.bar(csv, x="Increase", y="Entity", orientation="h", title=title, color="Increase",
-                    color_continuous_scale="RdYlBu_r")
+        fig = px.bar(
+            csv,
+            x="Increase",
+            y="Entity",
+            orientation="h",
+            title=title,
+            color="Increase",
+            color_continuous_scale="RdYlBu_r"
+        )
+
         fig.update_layout(coloraxis_showscale=False)
 
-
-
+    # returning the completed figure
     return fig
 
 
-col1, col2 = st.columns([1.5,1])
+# creating the webpage layout
+col1, col2 = st.columns([1.5, 1])
 
 with col1:
+
+    # displaying the category and sorting options
     with st.container(border=True, height=365):
         st.markdown("### Start by selecting a category:", text_alignment="center")
         st.write(" ")
@@ -78,29 +124,35 @@ with col1:
         type_choices = ["City", "Country"]
         warming_choices = ["Unsorted", "Highest warming", "Lowest warming"]
 
-        with st.container(border= True, height=120):
+        with st.container(border=True, height=120):
             category = st.radio("Choose: ", type_choices)
 
         with st.container(border=True, height=125):
             temp_change = st.radio("Sort by ⬇️", warming_choices)
 
 with col2:
-    with st.container(border= True, height=265):
+
+    # displaying the explanation of temperature anomaly
+    with st.container(border=True, height=265):
         st.markdown("### What is Temperature Anomaly??")
         st.markdown(
             "<p style='color:#c4f2ff;'>A temperature anomaly shows how much warmer or cooler a place is compared to its usual long-term average temperature.</p>",
-            unsafe_allow_html=True, text_alignment="center"
+            unsafe_allow_html=True,
+            text_alignment="center"
         )
+
         st.markdown("🟥 Positive (+) = Warmer than average")
         st.markdown("🟦 Negative (−) = Cooler than average")
 
-
 st.divider()
 
+# displaying the city ranking graph
 if category == "City":
     fig = graph3(category, city_ranks_df, temp_change)
     st.plotly_chart(fig)
     st.divider()
+
+# displaying the country ranking graph
 if category == "Country":
     fig = graph3(category, country_ranks_df, temp_change)
     st.plotly_chart(fig)
