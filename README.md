@@ -1,7 +1,5 @@
 # 🌍 The Earth Kept a Record. Here It Is.
 
-<div align="center">
-
 ### 80+ Years of Climate Change Through Interactive Visualizations
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -10,540 +8,230 @@
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
 
-### 📊 Making Climate Change Easier to Understand Through Interactive Data Visualization
 
-<br>
+# Overview ✔️
+> The Earth Kept a Record. Here It Is.
+> It is an interactive climate visualisation web application built with Streamlit and Plotly. 
+> Using over 80 years of real-world temperature data, 
+> users can explore climate trends through five interactive visualisations, compare cities and countries, 
+> view temperature rankings, explore decade-based heatmaps, and generate future temperature predictions using machine learning. 
+> The goal of the project is to make climate data simple, engaging, and easy to understand for everyone. 
 
-<!-- Add Homepage Screenshot Here -->
+---
 
-</div>
+# What is a Temperature Anomaly? ✔️
+
+A temperature anomaly shows how much warmer or cooler a place is compared to its usual long-term average temperature.
+Scientists use temperature anomalies because they remove the natural temperature differences between regions and climates. Instead of comparing absolute temperatures, anomalies compare every location against its own long-term average.
+This makes historical climate trends much easier to compare across different places and allows abnormal warming or cooling to be identified more accurately.
+
+🟥 Positive (+) = Warmer than average
+
+🟦 Negative (−) = Cooler than average
 
 ---
 
-# 📖 Overview
+# Main Features ✔️
 
-Climate change is one of the biggest challenges our planet faces, yet most people only experience it through headlines, scientific reports, or complex datasets. While the information is available, it is often difficult to explore, compare, and truly understand.
+## Temperature Trends
+This graph basically shows the actual temperature for any one city and the temperature anomaly for any one country.
 
-**The Earth Kept a Record. Here It Is.** transforms more than **80 years of historical climate data** into an interactive dashboard where users can explore how temperatures have changed across cities and countries through engaging visualizations.
+The users can see the Temperature change of that specific city/country 
 
-Instead of simply presenting numbers, this project encourages exploration. Users can compare locations, discover long-term warming patterns, identify which regions have warmed the most, visualize decades through heatmaps, and even explore possible future temperature trends using machine learning.
+This feature shows a line graph
+### Image: 
+![Temperature Trends](assets/graph1.png)
 
-The goal of this project is not only to visualize climate data but also to make climate change more accessible, understandable, and engaging for everyone.
+## Climate Comparison
+The users can select upto 7 cities/countries. Then they can compare them while having a line graph. 
+If the user does not feel the need to select they can also opt for the random option which would give them the graph containing 7 random cities/ countries based on there choice of category
+
+This feature would also give a line graph
+### Image: 
+![Climate Comparison](assets/graph2.png)
+
+## Heat Ranking
+This feature allows the user to see the top 15 cities/countries as they are ranked. 
+They are ranked in two ways one being the highest rankings and the other being lowest ranking.
+In the highest ranking they show the top 15 cities (which are available) /countries with the most temperature anomaly change.
+In the lowest ranking they show the top 15  cities(which are available)/ countries with the least temperature anomaly change.
+
+This feature shows a horizontal bar graph
+### Image: 
+![Heat Ranking](assets/graph3.png)
+
+## Temperature Heatmap
+The users can select upto 7 cities/countries. Then they can compare them while having a Heatmap. 
+If the user does not feel the need to select they can also opt for the random option which would give them the graph containing 7 random cities/ countries based on there choice of category.
+In this heatmap the color blue represents cool and red represents hot and the intensity of these colors then better help to understand the heatmap.
+In this heatmap decades are used to show a significant amount of change
+
+This feature shows a heatmap
+### Image: 
+![Temperature Heatmap](assets/graph4.png)
+
+## Future Temperature Prediction
+This feature helps user to see the temperature anomaly in the future and for this prediction polynomial regression is used.
+Ploynomial regression is set to degree 2 meaning that it would look and predict the values based on the quadratic curve making the predictions more accurate.
+Do note that the predictions are only meant for educational purposes only and are not mean to replace any scientific working at all cost.
+
+This feature shows a line graph
+### Image: 
+![Future Temperature Prediction](assets/graph5.png)
+---
+
+# Dataset ✔️
+
+This is everything to you need to know about the dataset:
+
+- ## Source of the data.
+  - The data for the cities is taken from the **NASA GISS (NASA Goddard Institute for Space Studies)** and processed for visualisation and analysis.
+  - The data for countries is taken from modified **Copernicus Climate Change Service information (2026)**
+  – with major processing by **Our World in Data**
+- ## Number of countries.
+  - Each country in the world is available
+- ## Number of cities.
+  - There are almost 17 cities available right now
+- ## Time period covered.
+  - The total time period covered is 80 years. from 1940s to 2025 
+- ## Main columns used.
+
+  | Category | Columns                   | Graphs |
+  |----------|---------------------------|--------|
+  | City     | metANN, YEAR              | Temperature Trends |
+  | City     | YEAR, Temperature anomaly | Climate Comparison, Heat Ranking, Temperature Heatmap, Future Temperature Prediction |
+   | Country | Year, Temperature anomaly | All 5 graphs |
+
+
+  
+---
+
+# Technologies Used ✔️
+The following are the language and the libraries I used and the purpose of them:
+
+| Technology   | Purpose              |
+|--------------|----------------------|
+| _**Python**_ | _The main program_   |
+| _**Streamlit**_ | _The frontend_    |
+| _**Plotly**_ | _The graphs_         |
+| _**Pandas**_ | _The loading, cleaning, organising, and manipulating the data used_ |
+| _**NumPy**_ | _The numerical operations, handling missing values, and preparing data for prediction._ |
+| _**Scikit-learn**_ | _The actual prediction model_ |
+
 
 ---
+
+# Project Structure ✔️
+
+```text
+Project/
+│
+├── homepage.py             # This file has the code for the main homepage of the web application
+├── data_clean.py           # This file has all the data processing and cleaning functions
+├── requirements.txt        # This file stores the requirements of this program and it is needed to install it  
+├── README.md               # This file is basically the README.md file which has all the information of the project
+│
+├── pages/                  # This folder has each of the graph pages which are to be displayed on the web application
+│   ├── graph1.py           # This is the page for the Temperature Trends graph
+│   ├── graph2.py           # This is the page for the Climate Comparison graph
+│   ├── graph3.py           # This is the page for the Heat Ranking graph
+│   ├── graph4.py           # This is the page for the Temperature Heatmap
+│   └── graph5.py           # This is the page for the Future Temperature Prediction graph 
+│
+└── Weather station csv/    # This folder contains the CSVs of the 17 cities and the each countries in the world
+│   ├── bangkok.csv
+│   ├── beijing.csv
+│   ├── berlin.csv
+│   ├── cairo.csv
+│   ├── delhi.csv
+│   ├── dubai.csv
+│   ├── london.csv
+│   ├── madrid.csv
+│   ├── moscow.csv
+│   ├── multan.csv
+│   ├── new york.csv
+│   ├── nuuk.csv
+│   ├── oslo.csv
+│   ├── paris.csv
+│   ├── rome.csv
+│   ├── seoul.csv
+│   ├── singapore.csv
+│   ├── sydney.csv
+│   ├── tokyo.csv
+│   ├── toronto.csv
+│   ├── world_data.csv      # The csv containing the data about each countries in the world
+│
+│
+├── assets/                # The images which are going to be in the README.md file
+│   ├── graph1.png
+│   ├── graph2.png
+│   ├── graph3.png
+│   ├── graph4.png
+│   ├── graph5.png
+│   ├── Homepage.png
+```
+
 ---
-# 🚀 Live Demo
-
-You can explore the project here:
-
+# 🌍 Try the project ✔️
 🌍 **The Earth Kept a Record. Here It Is.**
 
 👉 https://the-earth-kept-a-record-here-it-is-vavg5teg69z5fpeqsqcren.streamlit.app/
 
-No installation is required — simply open the link in your browser and start exploring.
+No installation is required.
+Simply open the link in your browser and start exploring.
+
+## Homepage preview
+![Homepage](assets/Homepage.png)
 
 ---
+# How to Use ✔️
+Inorder to use this web application.
 
-# 🌡️ What is a Temperature Anomaly?
+Kindly follow this steps.
 
-A **temperature anomaly** measures **how much warmer or cooler a location is compared to its long-term average temperature**, rather than showing the actual temperature itself.
+1. Open the homepage.
+2. Choose a graph.
+3. Select City or Country.
+4. Interact with the controls.
+5. Explore the results.
 
-For example:
-
-- If the long-term average temperature of a city is **20°C**
-- and this year the average temperature is **21.5°C**
-
-then the temperature anomaly is:
-
-**+1.5°C**
-
-Likewise,
-
-- If the average temperature becomes **18.8°C**
-
-the anomaly becomes:
-
-**−1.2°C**
-
-Scientists prefer using temperature anomalies instead of actual temperatures because they make it much easier to compare climate changes between different locations around the world, regardless of whether those places are naturally hot or cold.
-
-Throughout this project:
-
-🟥 **Positive anomalies** indicate temperatures **warmer than the historical average.**
-
-🟦 **Negative anomalies** indicate temperatures **cooler than the historical average.**
-
----
-
-# ✨ Features
-
-## 📈 Temperature Trends
-
-Explore how temperatures have changed across more than **80 years** for both cities and countries.
-
-- Interactive line graphs
-- City mode
-- Country mode
-- Historical temperature visualization
-- Long-term warming analysis
-
----
-
-## 🌡️ Climate Comparison
-
-Compare multiple cities or countries on the same graph.
-
-- Compare up to 7 locations simultaneously
-- Random comparison mode
-- Observe warming differences
-- Easily identify similar and different climate patterns
-
----
-
-## 🏆 Heat Ranking
-
-Discover which locations have experienced the greatest increase in temperature.
-
-- Top warming cities
-- Top warming countries
-- Ranked bar charts
-- Quickly identify climate hotspots
-
----
-
-## 🗺️ Temperature Heatmap
-
-Visualize decades of climate change through colour.
-
-- Decade-wise averages
-- Easy-to-read heatmaps
-- Compare warming intensity
-- Observe long-term climate patterns
-
----
-
-## 🔮 Future Temperature Predictor
-
-Explore how temperatures may continue changing in the future using machine learning.
-
-Features include:
-
-- Polynomial Regression prediction
-- Historical + predicted trends
-- Adjustable climate factors
-- Educational future estimates
-- Interactive prediction graph
-
----
-
-# 🖥️ Dashboard Walkthrough
+_As simple as that_
 
 
 ---
 
-# 🏠 Homepage
+# Challenges ✔️
 
-<div align="center">
+The Challenges I faced in this project were:
 
-<!-- Insert Homepage Screenshot -->
+- Learning streamlit from scratch as I didn't have experience with it before. 
+- Handling the different CSVs formats as the cities CSV were in actual temperature formats whereas the countries CSV was in temperature anomaly format and I eventually choose the Temperature anomaly as it is more scientifically accepted format
+- Building the prediction graph as I didn't know how to do regression instead I knew classification so I had to learn it first.
+---
 
-</div>
+# What I Learned When I Did This: ✔️
 
-The homepage serves as the central navigation hub of the application.
+- Streamlit web application development
+- Polynomial regression
+- UI and user experience design
+---
 
-It introduces the project, displays key information about the dataset, and provides users with direct access to every visualization. Instead of overwhelming users with complex controls immediately, the homepage gives a quick overview of what can be explored and encourages interactive learning.
+# Future Improvements ✔️
 
-The homepage contains:
+If this project has further expansion I would likely add:
 
-- 🌍 Project introduction
-- 📅 80+ years of climate records
-- 🌎 Climate visualization overview
-- 🚀 Quick navigation to all five graphs
-- 📂 Link to the GitHub repository
+- Almost all cities worldwide
+- Much better UI
+- Better prediction model the one that uses different factors and then predict according to those factors
+- Scientifically backed predictions that can be used for research
+- Better mobile layout
+- Download graphs as png
+- User customisation like themes
+- A research tab to help with climate change related topics and stuff
 
 ---
 
-# 📈 Graph 1 — Temperature Trends
+# Educational Disclaimer ✔️
 
-<div align="center">
-
-<!-- Insert Graph 1 Screenshot -->
-
-</div>
-
-The **Temperature Trends** page allows users to explore how temperatures have changed over time for a single location.
-
-Users can choose between:
-
-- 🏙️ City Mode
-- 🌍 Country Mode
-
-After selecting a location, an interactive line graph displays its temperature history across more than **80 years**.
-
-This visualization helps users:
-
-- Observe long-term warming patterns.
-- Identify years with unusually high or low temperatures.
-- Compare historical climate changes within a single location.
-- Understand how temperatures have evolved over decades.
-
----
-
-# 🌡️ Graph 2 — Climate Comparison
-
-<div align="center">
-
-<!-- Insert Graph 2 Screenshot -->
-
-</div>
-
-The Climate Comparison graph allows users to compare several locations on the same graph.
-
-Users may:
-
-- Select up to **7 cities**
-- Select up to **7 countries**
-- Use the **Random Selection** button to automatically generate comparisons
-
-Each location is displayed with its own coloured trend line, making it easy to compare warming rates over time.
-
-This visualization allows users to:
-
-- Compare different climates.
-- Discover which locations warmed faster.
-- Observe similarities between regions.
-- Understand global warming from multiple perspectives.
-
----
-
-# 🏆 Graph 3 — Heat Ranking
-
-<div align="center">
-
-<!-- Insert Graph 3 Screenshot -->
-
-</div>
-
-The Heat Ranking graph answers one simple question:
-
-> **Which places have warmed the most?**
-
-Instead of displaying the entire temperature history, this visualization calculates the total increase in temperature anomaly for every selected location and ranks them accordingly.
-
-Users can switch between:
-
-- 🌍 Countries
-- 🏙️ Cities
-
-The interactive bar chart makes it easy to:
-
-- Identify the fastest warming locations.
-- Compare total warming.
-- Explore which regions have experienced the greatest climate change.
-
----
-
-# 🗺️ Graph 4 — Temperature Heatmap
-
-<div align="center">
-
-<!-- Insert Graph 4 Screenshot -->
-
-</div>
-
-The Temperature Heatmap transforms decades of climate records into an easy-to-read colour map.
-
-Instead of viewing individual years, temperatures are grouped into decades, making long-term climate patterns much easier to recognise.
-
-Colours represent the average temperature anomaly during each decade.
-
-The heatmap allows users to:
-
-- Compare multiple locations simultaneously.
-- Observe gradual warming over time.
-- Quickly identify colder and warmer decades.
-- Detect climate patterns using colour instead of numbers.
-
----
-
-# 🔮 Graph 5 — Future Temperature Predictor
-
-<div align="center">
-
-<!-- Insert Graph 5 Screenshot -->
-
-</div>
-
-The Future Temperature Predictor is the most advanced part of the project.
-
-Rather than only visualising historical climate data, this page estimates how temperatures may continue changing in the future using Machine Learning.
-
-The graph combines:
-
-- Historical temperature anomalies
-- Predicted future anomalies
-- Adjustable climate factors
-
-Users can experiment with different future scenarios by changing several climate-related factors before generating predictions.
-
-This encourages users to think about how human actions may influence future climate trends.
-
----
-
-# 🤖 How the Prediction Works
-
-Unlike many simple trend lines, this project uses **Polynomial Regression (Degree = 2)** to model temperature changes over time.
-
-Historical climate records are first converted into polynomial features, allowing the model to capture gradual curves rather than assuming temperatures increase in a perfectly straight line.
-
-The workflow follows these steps:
-
-Historical Temperature Data
-
-⬇️
-
-Polynomial Feature Generation
-
-⬇️
-
-Polynomial Regression Model
-
-⬇️
-
-Future Temperature Prediction
-
-The predicted values are then displayed alongside the historical observations, allowing users to compare the past with the estimated future.
-
----
-
-## 🌱 Climate Factors
-
-To make predictions more interactive, the application includes adjustable climate factors.
-
-These factors allow users to simulate different future scenarios rather than viewing only one fixed prediction.
-
-### 🌿 Positive Contributing Factors
-
-Positive factors represent actions that may help reduce future warming.
-
-Examples include:
-
-- Increased afforestation
-- Better environmental policies
-- Greater use of renewable energy
-- Reduced carbon emissions
-
-Increasing these values reduces the projected warming trend.
-
----
-
-### 🏭 Negative Contributing Factors
-
-Negative factors represent activities that may increase future warming.
-
-Examples include:
-
-- Deforestation
-- Industrial emissions
-- Increased fossil fuel usage
-- Higher greenhouse gas emissions
-
-Increasing these values raises the projected warming trend.
-
----
-
-## ⚠️ Educational Disclaimer
-
-The prediction model is designed **for educational and visualization purposes only.**
-
-Although Polynomial Regression is capable of identifying long-term historical patterns, it does **not** replace scientific climate models developed by climate researchers.
-
-The predictions should therefore be interpreted as estimates that demonstrate how historical trends can be explored using machine learning rather than official climate forecasts.
-
-
-# 🛠️ Technologies Used
-
-| Technology | Purpose |
-|------------|---------|
-| 🐍 Python | Core programming language |
-| 📊 Pandas | Data loading, cleaning, and preprocessing |
-| 🎨 Streamlit | Interactive web application |
-| 📈 Plotly | Interactive visualizations |
-| 🤖 Scikit-Learn | Machine learning prediction model |
-
----
-
-# 📂 Dataset
-
-The project combines historical climate records from both **cities** and **countries**.
-
-### Cities
-
-The dashboard currently contains climate records for cities including:
-
-- Bangkok
-- Beijing
-- Berlin
-- Cairo
-- Delhi
-- Dubai
-- London
-- Madrid
-- Moscow
-- Multan
-- New York
-- Nuuk
-- Oslo
-- Paris
-- Rome
-- Seoul
-- Singapore
-- Sydney
-- Tokyo
-- Toronto
-
-Each city dataset contains annual average temperatures spanning more than **80 years**.
-
----
-
-### Countries
-
-The project also includes temperature anomaly data for **200+ countries**, allowing users to compare climate change on a global scale.
-
-Country data is represented using **temperature anomalies**, making comparisons between different climates more meaningful.
-
----
-
-# 📁 Project Structure
-
-```text
-The-Earth-Kept-a-Record/
-│
-├── Homepage.py
-│
-├── pages/
-│   ├── graph1.py
-│   ├── graph2.py
-│   ├── graph3.py
-│   ├── graph4.py
-│   └── graph5.py
-│
-├── Weather station csv/
-│   ├── world_data.csv
-│   ├── multan.csv
-│   ├── london.csv
-│   ├── ...
-│
-├── data_clean.py
-├── requirements.txt
-└── README.md
-```
-
----
-
----
-
-# 📸 Screenshots
-
-## 🏠 Homepage
-
-*![Homepage](assests/Homepage.png)*
-
----
-
-## 📈 Temperature Trends
-
-*![Tempeature Trends](assests/graph1.png)*
-
----
-
-## 🌡️ Climate Comparison
-
-*[Climate Comparison](assests/graph2.png)*
-
----
-
-## 🏆 Heat Ranking
-
-*[Heat Ranking](assests/graph3.png)*
-
----
-
-## 🗺️ Temperature Heatmap
-
-*[Tempeature Heatmap](assests/graph4.png)*
-
----
-
-## 🔮 Future Temperature Predictor
-
-*[Future Tempeature Predictor](assests/graph5.png)*
-
----
-
-# Why I Built This
-
-Climate change is often presented as numbers hidden inside research papers and reports.
-
-I wanted to create something that allows anyone to explore climate data interactively without requiring any scientific background.
-
-Instead of simply reading statistics, users can:
-
-- Explore real historical data.
-- Compare countries and cities.
-- Discover long-term warming patterns.
-- Visualize climate change through interactive graphs.
-- Experiment with future predictions using machine learning.
-
-My goal was to make climate data **interesting, interactive, and easy to understand.**
-
----
-
-# Future Improvements
-
-Some features I would like to add in future versions include:
-
-- Interactive world map
-- Search any city worldwide
-- Additional climate indicators (rainfall, humidity, CO₂)
-- Mobile-friendly layout
-- Download graphs as images
-- More advanced machine learning models
-- Live climate data integration through APIs
-
----
-
-# 👩‍💻 About the Developer
-
-Hi! I'm **Shehma Ali** from Pakistan 🇵🇰.
-
-I'm passionate about programming, problem solving, and building projects that combine creativity with technology.
-
-Some of my experiences include:
-
-- Harvard CS50P
-- Stanford Code in Place 2026 (Experienced Student)
-- NASA Stardance Participant
-- Data Visualization Enthusiast
-
-When I'm not coding, you'll probably find me watching movies, reading books, or learning something new.
-
----
-
-# License
-
-This project is intended for educational purposes.
-
-Feel free to explore, learn from, and build upon it with proper attribution.
-
----
-
-<div align="center">
-
-## 🌍 The Earth kept a record...
-
-### ...this project simply helps us read it.
-
-If you enjoyed this project, consider giving it a star!
-
-</div>
+The predictions in the prediction graphs are purely based on historical data and this can not replace the scientific research.
+This project is only intended for learning and exploration only.
