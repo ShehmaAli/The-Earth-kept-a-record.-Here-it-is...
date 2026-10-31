@@ -1,13 +1,11 @@
 # LIBRARIES :)
 import numpy as np
 import pandas as pd
-import streamlit as st
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
 
 # using st.cache_data to make data processing faster whenever data is needed again
-@st.cache_data
 # FUNCTION 1 :)
 # this function is basically to load all the necessary datasets for this web application !!!
 def load_data():
