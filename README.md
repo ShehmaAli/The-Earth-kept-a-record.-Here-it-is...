@@ -117,6 +117,7 @@ Project/
 │
 ├── homepage.py             # This file has the code for the main homepage of the web application
 ├── data_clean.py           # This file has all the data processing and cleaning functions
+├── ui.py                   # This file mainly helps to organise ui in the CLI 
 ├── requirements.txt        # This file stores the requirements of this program and it is needed to install it  
 ├── README.md               # This file is basically the README.md file which has all the information of the project
 │
