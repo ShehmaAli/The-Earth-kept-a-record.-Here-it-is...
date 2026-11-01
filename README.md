@@ -14,7 +14,7 @@
 > It is an interactive climate visualisation web application built with Streamlit and Plotly. 
 > Using over 80 years of real-world temperature data, 
 > users can explore climate trends through five interactive visualisations, compare cities and countries, 
-> view temperature rankings, explore decade-based heatmaps, and generate future temperature predictions using machine learning. 
+> view temperature rankings, explore decade-based heatmaps. 
 > The goal of the project is to make climate data simple, engaging, and easy to understand for everyone. 
 
 ---
