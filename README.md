@@ -70,16 +70,6 @@ This feature shows a heatmap
 ### Image: 
 ![Temperature Heatmap](assets/graph4.png)
 
-## Future Temperature Prediction
-This feature helps user to see the temperature anomaly in the future and for this prediction polynomial regression is used.
-Ploynomial regression is set to degree 2 meaning that it would look and predict the values based on the quadratic curve making the predictions more accurate.
-Do note that the predictions are only meant for educational purposes only and are not mean to replace any scientific working at all cost.
-
-This feature shows a line graph
-### Image: 
-![Future Temperature Prediction](assets/graph5.png)
----
-
 # Dataset ✔️
 
 This is everything to you need to know about the dataset:
@@ -112,7 +102,6 @@ The following are the language and the libraries I used and the purpose of them:
 | Technology   | Purpose              |
 |--------------|----------------------|
 | _**Python**_ | _The main program_   |
-| _**Streamlit**_ | _The frontend_    |
 | _**Plotly**_ | _The graphs_         |
 | _**Pandas**_ | _The loading, cleaning, organising, and manipulating the data used_ |
 | _**NumPy**_ | _The numerical operations, handling missing values, and preparing data for prediction._ |
@@ -128,6 +117,7 @@ Project/
 │
 ├── homepage.py             # This file has the code for the main homepage of the web application
 ├── data_clean.py           # This file has all the data processing and cleaning functions
+├── ui.py                   # This file mainly helps to organise ui in the CLI 
 ├── requirements.txt        # This file stores the requirements of this program and it is needed to install it  
 ├── README.md               # This file is basically the README.md file which has all the information of the project
 │
@@ -136,7 +126,6 @@ Project/
 │   ├── graph2.py           # This is the page for the Climate Comparison graph
 │   ├── graph3.py           # This is the page for the Heat Ranking graph
 │   ├── graph4.py           # This is the page for the Temperature Heatmap
-│   └── graph5.py           # This is the page for the Future Temperature Prediction graph 
 │
 └── Weather station csv/    # This folder contains the CSVs of the 17 cities and the each countries in the world
 │   ├── bangkok.csv
@@ -144,7 +133,6 @@ Project/
 │   ├── berlin.csv
 │   ├── cairo.csv
 │   ├── delhi.csv
-│   ├── dubai.csv
 │   ├── london.csv
 │   ├── madrid.csv
 │   ├── moscow.csv
@@ -155,10 +143,8 @@ Project/
 │   ├── paris.csv
 │   ├── rome.csv
 │   ├── seoul.csv
-│   ├── singapore.csv
 │   ├── sydney.csv
 │   ├── tokyo.csv
-│   ├── toronto.csv
 │   ├── world_data.csv      # The csv containing the data about each countries in the world
 │
 │
@@ -167,7 +153,6 @@ Project/
 │   ├── graph2.png
 │   ├── graph3.png
 │   ├── graph4.png
-│   ├── graph5.png
 │   ├── Homepage.png
 ```
 
@@ -175,14 +160,6 @@ Project/
 # 🌍 Try the project ✔️
 🌍 **The Earth Kept a Record. Here It Is.**
 
-<<<<<<< HEAD
-👉 https://the-earth-kept-a-record-here-it-is-vavg5teg69z5fpeqsqcren.streamlit.app/
-=======
-👉 
->>>>>>> 4d86aa4 (chore: create CLI version of climate dashboard)
-
-No installation is required.
-Simply open the link in your browser and start exploring.
 
 ## Homepage preview
 ![Homepage](assets/Homepage.png)
@@ -193,7 +170,7 @@ Inorder to use this web application.
 
 Kindly follow this steps.
 
-1. Open the homepage.
+1. In the homepage.
 2. Choose a graph.
 3. Select City or Country.
 4. Interact with the controls.
@@ -214,10 +191,7 @@ The Challenges I faced in this project were:
 ---
 
 # What I Learned When I Did This: ✔️
-
-- Streamlit web application development
 - Polynomial regression
-- UI and user experience design
 ---
 
 # Future Improvements ✔️
@@ -234,8 +208,3 @@ If this project has further expansion I would likely add:
 - A research tab to help with climate change related topics and stuff
 
 ---
-
-# Educational Disclaimer ✔️
-
-The predictions in the prediction graphs are purely based on historical data and this can not replace the scientific research.
-This project is only intended for learning and exploration only.
