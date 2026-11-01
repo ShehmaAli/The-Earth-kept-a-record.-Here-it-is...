@@ -174,7 +174,7 @@ Inorder to use this web application.
 
 Kindly follow this steps.
 
-1. Open the homepage.
+1. In the homepage.
 2. Choose a graph.
 3. Select City or Country.
 4. Interact with the controls.
@@ -195,10 +195,7 @@ The Challenges I faced in this project were:
 ---
 
 # What I Learned When I Did This: ✔️
-
-- Streamlit web application development
 - Polynomial regression
-- UI and user experience design
 ---
 
 # Future Improvements ✔️
@@ -215,8 +212,3 @@ If this project has further expansion I would likely add:
 - A research tab to help with climate change related topics and stuff
 
 ---
-
-# Educational Disclaimer ✔️
-
-The predictions in the prediction graphs are purely based on historical data and this can not replace the scientific research.
-This project is only intended for learning and exploration only.
