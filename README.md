@@ -126,7 +126,6 @@ Project/
 │   ├── graph2.py           # This is the page for the Climate Comparison graph
 │   ├── graph3.py           # This is the page for the Heat Ranking graph
 │   ├── graph4.py           # This is the page for the Temperature Heatmap
-│   └── graph5.py           # This is the page for the Future Temperature Prediction graph 
 │
 └── Weather station csv/    # This folder contains the CSVs of the 17 cities and the each countries in the world
 │   ├── bangkok.csv
@@ -134,7 +133,6 @@ Project/
 │   ├── berlin.csv
 │   ├── cairo.csv
 │   ├── delhi.csv
-│   ├── dubai.csv
 │   ├── london.csv
 │   ├── madrid.csv
 │   ├── moscow.csv
@@ -145,10 +143,8 @@ Project/
 │   ├── paris.csv
 │   ├── rome.csv
 │   ├── seoul.csv
-│   ├── singapore.csv
 │   ├── sydney.csv
 │   ├── tokyo.csv
-│   ├── toronto.csv
 │   ├── world_data.csv      # The csv containing the data about each countries in the world
 │
 │
@@ -157,7 +153,6 @@ Project/
 │   ├── graph2.png
 │   ├── graph3.png
 │   ├── graph4.png
-│   ├── graph5.png
 │   ├── Homepage.png
 ```
 
