@@ -1,132 +1,197 @@
 """
 GRAPHS AND TYPES:
-1: Indiviual City/country line graph seperately
-2: all cities/ countries comparison seperately
-3: Total warming bar chart seperately
-4: Decade heatmap seperately
-5: Regression future predictor
+1: Individual city/country line graph separately
+2: All cities/countries comparison separately
+3: Total warming bar chart separately
+4: Decade heatmap separately
 """
 
-# LIBRARY :)
-# imported streamlit to make up the homepage
-import streamlit as st
+# importing the required functions and graph modules
+from ui import (
+    separator,
+    show_header,
+    show_data_cards,
+    show_visualisation_menu,
+    show_section,
+    get_choice,
+    show_footer,
+    temp_anomaly_table,
+    show_location_type_menu,
+    get_location_selection,
+    category,
+    show_sorting_choices,
+    get_sorting_choice
+)
 
-# setting up the main web homepage using streamlit
-st.set_page_config("Earth Kept a Record. Here it is!!", "🌎", layout="wide")
+# importing functions from other files
+from data_clean import load_data, clean_csvs, one_country_name
+from graph1 import graph1
+from graph2 import graph2
+from graph3 import graph3
+from graph4 import graph4
 
-# the title and description of the page
-st.title("&#127758; Earth Kept a :red[Record]. Here it is!!", text_alignment="center")
-st.markdown("### 80 years of climate change shown easily", text_alignment="center")
 
-# using st.divider to put a divider and make the page clean
-st.divider()
+# loading and preparing the climate datasets
+world_data, all_cities = load_data()
+Allcities, clean_world_data = clean_csvs(all_cities, world_data)
+country_names = one_country_name(clean_world_data)
 
-# the quick summary about the data of the web application
-st.markdown("## Let's see the Earth's record: ", text_alignment="center")
+# available cities for selection
+all_cities = [
+    "bangkok",
+    "beijing",
+    "berlin",
+    "cairo",
+    "delhi",
+    "london",
+    "madrid",
+    "moscow",
+    "multan",
+    "new york",
+    "nuuk",
+    "oslo",
+    "paris",
+    "rome",
+    "seoul",
+    "sydney",
+    "tokyo",
+]
 
-# using st.columns to make the data split into 3 equal columns
-column1, column2, column3 = st.columns(3, gap="medium", vertical_alignment="top")
 
-# using st.metric to display mini information cards being visually good
-with column1:
-    st.metric("Years of data", ":blue[80+]")
-with column2:
-    st.metric("Visualisations", ":red[5]")
-with column3:
-    st.metric("Countries", " :green[200+]")
+# PROJECT INFORMATION
+years = 86
+visualisations = 4
+countries = world_data["Entity"].nunique()
 
-# using st.divider to put a divider and make the page clean
-st.divider()
 
-# Create navigation cards for each visualisation.
-with column1:
-    with st.container(border=True, vertical_alignment="bottom", height=250):
-        # using some html, css for the color
-        st.markdown(
-            "<h2 style='color:#45ffb8;'>📈 Temperature Trends</h2>",
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            "<p style='color:#a8ffde;'>See the temperatures changes over 80+ years for any country or city. </p>",
-            unsafe_allow_html=True
 
-            )
-        st.write("")
-        st.page_link("pages/graph1.py", label="Explore Now")
-with column2:
-    with st.container(border=True, vertical_alignment="bottom", height=250):
-        # using some html, css for the color
-        st.markdown(
-            "<h2 style='color:#45ffec;'>🌡️ Climate Comparison</h2>",
-            unsafe_allow_html=True
-        )
-        st.markdown("<p style='color:#aafaf2;'>Pick multiple cities and see who warmed up fastest. Take a guess!!!</p>",
-                    unsafe_allow_html=True
+# MAIN APPLICATION
+def main():
 
-                    )
-        st.write("")
-        st.page_link("pages/graph2.py", label="Start Comparing!!!")
-with column3:
-    with st.container(border=True, vertical_alignment="bottom", height=250):
-        # using some html, css for the color
-        st.markdown(
-            "<h2 style='color:#45d7ff;'>🌎 Heat Ranking</h2>",
-            unsafe_allow_html=True
-        )
-        st.write("")
-        st.markdown(
-            "<p style='color:#9ae7fc;'>Who is heating up the most?? Who warmed up the most?? See the top 20 countries and cities in seconds!!</p>",
-            unsafe_allow_html=True
+    # displaying the homepage
+    show_header()
+    show_data_cards(years, visualisations, countries)
 
-            )
-        st.write("")
-        st.page_link("pages/graph3.py", label="View Ranking!!")
+    # keeping the main menu active
+    while True:
 
-col1, col2 = st.columns(2)
+        show_visualisation_menu()
+        choice = get_choice()
 
-with col1:
-    with st.container(border=True, vertical_alignment="center", height=250):
-        # using some html, css for the color
-        st.markdown(
-            "<h2 style='color:#457dff;'>🗺️ Temperature Heatmap</h2>",
-            unsafe_allow_html=True)
-        st.write("")
-        st.markdown(
-            "<p style='color:#86aafc;'>Watch climate change unfold decade by decade with an interactive heatmap.Maybe your country is the hottest who knows??!</p>",
-            unsafe_allow_html=True)
-        st.write("")
-        st.page_link("pages/graph4.py", label="Open heatmap")
-with col2:
-    with st.container(border=True, vertical_alignment="center", height=250):
-        # using some html, css for the color
-        st.markdown(
-            "<h2 style='color:#7045ff;'>🔮 Future Temperature Prediction</h2>",
-            unsafe_allow_html=True)
-        st.markdown(
-            "<p style='color:#c6b5ff;'>See what the future looks like yourself with the magic of machine learning :) </p>",
-            unsafe_allow_html=True)
-        st.write("")
-        st.page_link("pages/graph5.py", label="Let's see the future!!!")
+        # GRAPH 1: Temperature Trends
+        if choice == "1":
+            show_section("📈 Temperature Trends")
+            show_location_type_menu()
+            category_selection = category()
+            separator()
+            temp_anomaly_table()
+            separator()
 
-# using st.divider to put a divider and make the page clean
-st.divider()
+            if category_selection == "q":
+                pass
 
-# displaying the about section
-st.markdown("## About:")
-st.markdown("The Earth Kept a Record transforms over 80 years of real climate data "
-            "into an interactive experience. Explore temperature trends, compare cities and countries, "
-            "uncover climate patterns, and discover what Earth's data has to "
-            "say, all through beautiful, easy-to-use visualizations.")
-st.write("")
+            if category_selection == "1" or category_selection == "cities":
+                final_list = get_location_selection(all_cities, 0)
+                fig = graph1("City", final_list)
+                fig.show()
+                print("Kindly do come again to explore other visualisations")
+                break
 
-# using some html, css for the color
-st.markdown("<p style='color:#d1ffee;'>Every graph is the reflections of our actions. </p>",
-            unsafe_allow_html=True)
+            if category_selection == "2" or category_selection == "countries":
+                final_list = get_location_selection(country_names, 0)
+                fig = graph1("Country", final_list)
+                fig.show()
+                print("Kindly do come again to explore other visualisations")
+                break
 
-# using st.divider to put a divider and make the page clean
-st.divider()
+        # GRAPH 2: Climate Comparison
+        elif choice == "2":
+            show_section("🌡️ Climate Comparison")
+            show_location_type_menu()
+            category_selection = category()
+            separator()
+            temp_anomaly_table()
+            separator()
 
-# providing the link to this project's github repository
-st.markdown("## Curious to explore more 🤔???", text_alignment="center")
-st.markdown("### 📂 Let's go to explore the GitHub Repository", text_alignment="center")
-st.page_link("https://github.com/ShehmaAli/The-Earth-kept-a-record.-Here-it-is...", label="Let's go!!", width="stretch")
+            if category_selection == "q":
+                pass
+
+            if category_selection == "1" or category_selection == "cities":
+                final_list = get_location_selection(all_cities, 7)
+                fig = graph2("City", final_list)
+                fig.show()
+                print("Kindly do come again to explore other visualisations")
+                break
+
+            if category_selection == "2" or category_selection == "countries":
+                final_list = get_location_selection(country_names, 7)
+                fig = graph2("Country", final_list)
+                fig.show()
+                print("Kindly do come again to explore other visualisations")
+                break
+
+        # GRAPH 3: Hottest Places Rankings
+        elif choice == "3":
+            show_section("🌎 Hottest Places Rankings")
+            show_location_type_menu()
+            category_choice = input("Enter your choice: ").lower()
+            separator()
+            show_sorting_choices()
+            temp_change = get_sorting_choice()
+            separator()
+            temp_anomaly_table()
+            separator()
+
+            if category_choice == "1" or category_choice == "cities":
+                fig = graph3("City", temp_change)
+                fig.show()
+                print("Kindly do come again to explore other visualisations")
+                break
+
+            elif category_choice == "2" or category_choice == "countries":
+                fig = graph3("Country", temp_change)
+                fig.show()
+                print("Kindly do come again to explore other visualisations")
+                break
+
+            elif category_choice == "q" or category_choice == "quit":
+                pass
+
+        # GRAPH 4: Temperature Heatmap
+        elif choice == "4":
+            show_section("🗺️ Temperature Heatmap")
+            show_location_type_menu()
+            category_selection = category()
+            separator()
+            temp_anomaly_table()
+            separator()
+
+            if category_selection == "q":
+                pass
+
+            if category_selection == "1" or category_selection == "cities":
+                final_list = get_location_selection(all_cities, 10)
+                fig = graph4("City", final_list)
+                fig.show()
+                print("Kindly do come again to explore other visualisations")
+                break
+
+            if category_selection == "2" or category_selection == "countries":
+                final_list = get_location_selection(country_names, 10)
+                fig = graph4("Country", final_list)
+                fig.show()
+                print("Kindly do come again to explore other visualisations")
+                break
+
+        # QUIT APPLICATION
+        elif choice == "q":
+            show_footer()
+            break
+
+        else:
+            print("\nInvalid choice. Please select 1-4 or Q.")
+
+
+# running the application
+if __name__ == "__main__":
+    main()

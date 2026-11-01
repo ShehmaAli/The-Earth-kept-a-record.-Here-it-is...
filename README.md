@@ -4,9 +4,9 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+
 
 
 # Overview ✔️
@@ -175,7 +175,11 @@ Project/
 # 🌍 Try the project ✔️
 🌍 **The Earth Kept a Record. Here It Is.**
 
+<<<<<<< HEAD
 👉 https://the-earth-kept-a-record-here-it-is-vavg5teg69z5fpeqsqcren.streamlit.app/
+=======
+👉 
+>>>>>>> 4d86aa4 (chore: create CLI version of climate dashboard)
 
 No installation is required.
 Simply open the link in your browser and start exploring.

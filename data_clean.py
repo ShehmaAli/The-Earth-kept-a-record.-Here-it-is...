@@ -1,13 +1,11 @@
 # LIBRARIES :)
 import numpy as np
 import pandas as pd
-import streamlit as st
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
 
 # using st.cache_data to make data processing faster whenever data is needed again
-@st.cache_data
 # FUNCTION 1 :)
 # this function is basically to load all the necessary datasets for this web application !!!
 def load_data():
@@ -25,12 +23,9 @@ def load_data():
     sydney = pd.read_csv("Weather station csv/sydney.csv")
     tokyo = pd.read_csv("Weather station csv/tokyo.csv")
     paris = pd.read_csv("Weather station csv/paris.csv")
-    dubai = pd.read_csv("Weather station csv/dubai.csv")
     nuuk = pd.read_csv("Weather station csv/nuuk.csv")
     cairo = pd.read_csv("Weather station csv/cairo.csv")
-    toronto = pd.read_csv("Weather station csv/toronto.csv")
     moscow = pd.read_csv("Weather station csv/moscow.csv")
-    singapore = pd.read_csv("Weather station csv/singapore.csv")
     madrid = pd.read_csv("Weather station csv/madrid.csv")
     seoul = pd.read_csv("Weather station csv/seoul.csv")
     rome = pd.read_csv("Weather station csv/rome.csv")
@@ -41,26 +36,23 @@ def load_data():
     # Making a seperate dictionary for the city csv
     # for easier data handling later
     all_cities = {
-        "Bangkok": bangkok,
-        "Beijing": beijing,
-        "Berlin": berlin,
-        "Cairo": cairo,
-        "Delhi": delhi,
-        "Dubai": dubai,
-        "London": london,
-        "Madrid": madrid,
-        "Moscow": moscow,
-        "Multan": multan,
-        "New York": new_york,
-        "Nuuk": nuuk,
-        "Oslo": oslo,
-        "Paris": paris,
-        "Rome": rome,
-        "Seoul": seoul,
-        "Singapore": singapore,
-        "Sydney": sydney,
-        "Tokyo": tokyo,
-        "Toronto": toronto,
+        "bangkok": bangkok,
+        "beijing": beijing,
+        "berlin": berlin,
+        "cairo": cairo,
+        "delhi": delhi,
+        "london": london,
+        "madrid": madrid,
+        "moscow": moscow,
+        "multan": multan,
+        "new york": new_york,
+        "nuuk": nuuk,
+        "oslo": oslo,
+        "paris": paris,
+        "rome": rome,
+        "seoul": seoul,
+        "sydney": sydney,
+        "tokyo": tokyo,
     }
 
     # returning the world data csv
@@ -311,3 +303,5 @@ def predict(type, csv, prediction_year):
 
     # returning the predicted_df
     return predicted_df
+
+
