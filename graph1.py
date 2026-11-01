@@ -18,12 +18,12 @@ def graph1(type,name_list):
         csv = to_one_df(name_list,Allcities)
         years = csv["YEAR"]
         temps = csv["metANN"]
-        final_title = f"Average annual temperature in your selected City"
+        final_title = f"Average annual temperature in {name_list[0]}"
     if type == "Country":
         csv = extract_countries(name_list, clean_world_data)
         years = csv["Year"]
         temps = csv["Temperature anomaly"]
-        final_title = f"Temperature anomalies in your selected Country"
+        final_title = f"Temperature anomalies in {name_list[0]}"
 
     # making a graph with the use of px.line
     fig = px.line(csv, x=years, y=temps, title=final_title, color_discrete_sequence=["orangered"])
