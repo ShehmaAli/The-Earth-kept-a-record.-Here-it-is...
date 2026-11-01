@@ -70,16 +70,6 @@ This feature shows a heatmap
 ### Image: 
 ![Temperature Heatmap](assets/graph4.png)
 
-## Future Temperature Prediction
-This feature helps user to see the temperature anomaly in the future and for this prediction polynomial regression is used.
-Ploynomial regression is set to degree 2 meaning that it would look and predict the values based on the quadratic curve making the predictions more accurate.
-Do note that the predictions are only meant for educational purposes only and are not mean to replace any scientific working at all cost.
-
-This feature shows a line graph
-### Image: 
-![Future Temperature Prediction](assets/graph5.png)
----
-
 # Dataset ✔️
 
 This is everything to you need to know about the dataset:
@@ -112,7 +102,6 @@ The following are the language and the libraries I used and the purpose of them:
 | Technology   | Purpose              |
 |--------------|----------------------|
 | _**Python**_ | _The main program_   |
-| _**Streamlit**_ | _The frontend_    |
 | _**Plotly**_ | _The graphs_         |
 | _**Pandas**_ | _The loading, cleaning, organising, and manipulating the data used_ |
 | _**NumPy**_ | _The numerical operations, handling missing values, and preparing data for prediction._ |
@@ -175,14 +164,6 @@ Project/
 # 🌍 Try the project ✔️
 🌍 **The Earth Kept a Record. Here It Is.**
 
-<<<<<<< HEAD
-👉 https://the-earth-kept-a-record-here-it-is-vavg5teg69z5fpeqsqcren.streamlit.app/
-=======
-👉 
->>>>>>> 4d86aa4 (chore: create CLI version of climate dashboard)
-
-No installation is required.
-Simply open the link in your browser and start exploring.
 
 ## Homepage preview
 ![Homepage](assets/Homepage.png)
