@@ -9,18 +9,18 @@ GRAPHS AND TYPES:
 # importing the required functions and graph modules
 from ui import (
     separator,
-    show_header,
-    show_data_cards,
-    show_visualisation_menu,
-    show_section,
-    get_choice,
-    show_footer,
-    temp_anomaly_table,
-    show_location_type_menu,
+    header,
+    stat_cards,
+    visualisation_menu,
+    section_heading,
+    user_choice,
+    footer,
+    about_temp_anomaly,
+    location_menu,
     get_location_selection,
-    category,
-    show_sorting_choices,
-    get_sorting_choice
+    user_category,
+    output_sorting_choices,
+    user_sort_choice
 )
 
 # importing functions from other files
@@ -57,34 +57,27 @@ all_cities = [
     "tokyo",
 ]
 
-
-# PROJECT INFORMATION
-years = 86
-visualisations = 4
-countries = world_data["Entity"].nunique()
-
-
-
-# MAIN APPLICATION
+# Main Function actually the main function that would run the whole program
 def main():
 
     # displaying the homepage
-    show_header()
-    show_data_cards(years, visualisations, countries)
+    header()
+    stat_cards(86, 4, world_data["Entity"].nunique())
 
     # keeping the main menu active
     while True:
 
-        show_visualisation_menu()
-        choice = get_choice()
+        visualisation_menu()
+        choice = user_choice()
 
         # GRAPH 1: Temperature Trends
+        # this graph would show the temperature trend of the single city/country
         if choice == "1":
-            show_section("📈 Temperature Trends")
-            show_location_type_menu()
-            category_selection = category()
+            section_heading("📈 Temperature Trends")
+            location_menu()
+            category_selection = user_category()
             separator()
-            temp_anomaly_table()
+            about_temp_anomaly()
             separator()
 
             if category_selection == "q":
@@ -98,19 +91,21 @@ def main():
                 break
 
             if category_selection == "2" or category_selection == "countries":
-                final_list = get_location_selection(country_names, 0)
+                final_list = get_location_selection(all_country_names, 0)
                 fig = graph1("Country", final_list)
                 fig.show()
                 print("Kindly do come again to explore other visualisations")
                 break
 
         # GRAPH 2: Climate Comparison
+        # this graph would be open up in the browser
+        # and this graph would compare multiple cities/countries
         elif choice == "2":
-            show_section("🌡️ Climate Comparison")
-            show_location_type_menu()
-            category_selection = category()
+            section_heading("🌡️ Climate Comparison")
+            location_menu()
+            category_selection = user_category()
             separator()
-            temp_anomaly_table()
+            about_temp_anomaly()
             separator()
 
             if category_selection == "q":
@@ -124,22 +119,25 @@ def main():
                 break
 
             if category_selection == "2" or category_selection == "countries":
-                final_list = get_location_selection(country_names, 7)
+                final_list = get_location_selection(all_country_names, 7)
                 fig = graph2("Country", final_list)
                 fig.show()
                 print("Kindly do come again to explore other visualisations")
                 break
 
         # GRAPH 3: Hottest Places Rankings
+        # this graph would open in the browser and show the user
+        # either ranking by highest warming
+        # either ranking by lowest warming
         elif choice == "3":
-            show_section("🌎 Hottest Places Rankings")
-            show_location_type_menu()
+            section_heading("🌎 Hottest Places Rankings")
+            location_menu()
             category_choice = input("Enter your choice: ").lower()
             separator()
-            show_sorting_choices()
-            temp_change = get_sorting_choice()
+            output_sorting_choices()
+            temp_change = user_sort_choice()
             separator()
-            temp_anomaly_table()
+            about_temp_anomaly()
             separator()
 
             if category_choice == "1" or category_choice == "cities":
@@ -158,12 +156,13 @@ def main():
                 pass
 
         # GRAPH 4: Temperature Heatmap
+        # this graph is supposed to open a heatmap in the browser
         elif choice == "4":
-            show_section("🗺️ Temperature Heatmap")
-            show_location_type_menu()
-            category_selection = category()
+            section_heading("🗺️ Temperature Heatmap")
+            location_menu()
+            category_selection = user_category()
             separator()
-            temp_anomaly_table()
+            about_temp_anomaly()
             separator()
 
             if category_selection == "q":
@@ -177,7 +176,7 @@ def main():
                 break
 
             if category_selection == "2" or category_selection == "countries":
-                final_list = get_location_selection(country_names, 10)
+                final_list = get_location_selection(all_country_names, 10)
                 fig = graph4("Country", final_list)
                 fig.show()
                 print("Kindly do come again to explore other visualisations")
@@ -185,11 +184,11 @@ def main():
 
         # QUIT APPLICATION
         elif choice == "q":
-            show_footer()
+            footer()
             break
 
         else:
-            print("\nInvalid choice. Please select 1-4 or Q.")
+            print("\nDear user kindly select within 1-4 or Q to quit the program.")
 
 
 # running the application
